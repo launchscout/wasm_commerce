@@ -39,7 +39,7 @@ defmodule WasmCommerceWeb.OrderLive.Index do
           <tbody class="bg-white divide-y divide-gray-200">
             <%= for order <- @orders do %>
               <tr>
-                <td class="px-6 py-4 whitespace-nowrap">#<%= order.id %></td>
+                <td class="px-6 py-4 whitespace-nowrap"><%= order.id %></td>
                 <td class="px-6 py-4 whitespace-nowrap"><%= order.customer.name %></td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <span class={"px-3 py-1 rounded-full text-sm font-medium #{status_color(order.status)}"}>

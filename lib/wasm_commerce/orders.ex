@@ -56,11 +56,20 @@ defmodule WasmCommerce.Orders do
 
   def calculate_order_total(order_id) do
     line_items = Repo.all(from li in LineItem, where: li.order_id == ^order_id)
-    total = Enum.reduce(line_items, Decimal.new("0"), fn item, acc ->
+
+    # Calculate subtotal from line items
+    subtotal = Enum.reduce(line_items, Decimal.new("0"), fn item, acc ->
       Decimal.add(acc, item.subtotal)
     end)
 
+    # Get order to retrieve shipping amount
     order = get_order!(order_id)
+    shipping = order.shipping_amount || Decimal.new("20.00")
+
+    # Add shipping to get total
+    total = Decimal.add(subtotal, shipping)
+
+    # Update order
     update_order(order, %{total: total})
   end
 end

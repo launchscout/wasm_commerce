@@ -5,9 +5,17 @@ defmodule WasmCommerceWeb.OrderLive.Show do
   def mount(%{"id" => id}, _session, socket) do
     order = Orders.get_order!(id)
 
+    # Calculate subtotal (total - shipping)
+    subtotal = if order.total && order.shipping_amount do
+      Decimal.sub(order.total || Decimal.new("0"), order.shipping_amount || Decimal.new("0"))
+    else
+      Decimal.new("0")
+    end
+
     {:ok, assign(socket,
       order: order,
-      page_title: "Order ##{order.id}"
+      subtotal: subtotal,
+      page_title: "Order #{order.id}"
     )}
   end
 
@@ -15,7 +23,7 @@ defmodule WasmCommerceWeb.OrderLive.Show do
     ~H"""
     <div class="max-w-4xl mx-auto p-4">
       <div class="flex justify-between items-center mb-6">
-        <h1 class="text-2xl font-bold">Order ##{@order.id}</h1>
+        <h1 class="text-2xl font-bold">Order #{@order.id}</h1>
         <span class={"px-3 py-1 rounded-full text-sm font-medium #{status_color(@order.status)}"}>
           <%= String.capitalize(@order.status) %>
         </span>
@@ -64,10 +72,18 @@ defmodule WasmCommerceWeb.OrderLive.Show do
               </tr>
             <% end %>
           </tbody>
-          <tfoot>
+          <tfoot class="bg-gray-50">
             <tr>
-              <td colspan="3" class="px-6 py-4 text-right font-medium">Total</td>
-              <td class="px-6 py-4 font-medium">$<%= @order.total %></td>
+              <td colspan="3" class="px-6 py-2 text-right font-medium">Subtotal</td>
+              <td class="px-6 py-2 font-medium">$<%= @subtotal %></td>
+            </tr>
+            <tr>
+              <td colspan="3" class="px-6 py-2 text-right font-medium">Shipping</td>
+              <td class="px-6 py-2 font-medium">$<%= @order.shipping_amount %></td>
+            </tr>
+            <tr>
+              <td colspan="3" class="px-6 py-4 text-right font-bold text-lg">Total</td>
+              <td class="px-6 py-4 font-bold text-lg">$<%= @order.total %></td>
             </tr>
           </tfoot>
         </table>

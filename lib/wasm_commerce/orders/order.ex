@@ -5,6 +5,7 @@ defmodule WasmCommerce.Orders.Order do
   schema "orders" do
     field :total, :decimal
     field :status, :string, default: "pending"
+    field :shipping_amount, :decimal, default: Decimal.new("20.00")
 
     belongs_to :customer, WasmCommerce.Accounts.Customer
     has_many :line_items, WasmCommerce.Orders.LineItem
@@ -14,7 +15,7 @@ defmodule WasmCommerce.Orders.Order do
 
   def changeset(order, attrs) do
     order
-    |> cast(attrs, [:total, :status, :customer_id])
+    |> cast(attrs, [:total, :status, :customer_id, :shipping_amount])
     |> validate_required([:customer_id])
     |> validate_inclusion(:status, ["pending", "completed", "cancelled"])
     |> foreign_key_constraint(:customer_id)
