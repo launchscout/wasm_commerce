@@ -15,7 +15,7 @@ alias WasmCommerce.{Accounts, Catalog, Repo}
 # Create customers
 customers = [
   %{
-    name: "John Smith",
+    name: "California John",
     email: "john.smith@example.com",
     phone: "555-123-4567",
     address: "123 Main St",
@@ -24,22 +24,22 @@ customers = [
     zip: "12345"
   },
   %{
-    name: "Sarah Johnson",
+    name: "Ohio Sarah",
     email: "sarah.j@example.com",
     phone: "555-987-6543",
     address: "456 Oak Ave",
     city: "Somewhere",
-    state: "NY",
-    zip: "67890"
+    state: "OH",
+    zip: "45231"
   },
   %{
-    name: "Michael Brown",
+    name: "Texas Mike",
     email: "m.brown@example.com",
     phone: "555-555-5555",
     address: "789 Pine Rd",
     city: "Elsewhere",
     state: "TX",
-    zip: "54321"
+    zip: "75201"
   }
 ]
 
