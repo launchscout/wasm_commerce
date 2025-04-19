@@ -5,7 +5,7 @@ defmodule WasmCommerce.Orders.Order do
   schema "orders" do
     field :total, :decimal
     field :status, :string, default: "pending"
-    field :shipping_amount, :decimal, default: Decimal.new("20.00")
+    field :shipping_amount, :decimal
 
     belongs_to :customer, WasmCommerce.Accounts.Customer
     has_many :line_items, WasmCommerce.Orders.LineItem

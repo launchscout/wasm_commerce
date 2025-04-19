@@ -3,6 +3,7 @@ defmodule WasmCommerce.Orders do
   alias WasmCommerce.Repo
   alias WasmCommerce.Orders.{Order, LineItem}
   alias WasmCommerce.Catalog.Product
+  alias WasmCommerce.Orders.ShippingCalculator
 
   def list_orders do
     Repo.all(Order)
@@ -64,17 +65,19 @@ defmodule WasmCommerce.Orders do
 
     # Get order to retrieve shipping amount
     order = get_order!(order_id)
-    shipping = shipping_amount(order)
+    shipping = shipping_amount(order) |> IO.inspect(label: "shipping")
 
     # Add shipping to get total
     total = Decimal.add(subtotal, shipping)
 
     # Update order
-    update_order(order, %{total: total})
+    update_order(order, %{total: total, shipping_amount: shipping})
   end
 
   def shipping_amount(order) do
-    order.shipping_amount || 20
+    order = to_cents(order)
+    {:ok, shipping_cents} = ShippingCalculator.calculate_shipping(ShippingCalculator, order)
+    Decimal.from_float(shipping_cents / 100)
   end
 
   @doc """
