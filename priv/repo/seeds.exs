@@ -18,19 +18,28 @@ customers = [
     name: "John Smith",
     email: "john.smith@example.com",
     phone: "555-123-4567",
-    address: "123 Main St, Anytown, USA"
+    address: "123 Main St",
+    city: "Anytown",
+    state: "CA",
+    zip: "12345"
   },
   %{
     name: "Sarah Johnson",
     email: "sarah.j@example.com",
     phone: "555-987-6543",
-    address: "456 Oak Ave, Somewhere, USA"
+    address: "456 Oak Ave",
+    city: "Somewhere",
+    state: "NY",
+    zip: "67890"
   },
   %{
     name: "Michael Brown",
     email: "m.brown@example.com",
     phone: "555-555-5555",
-    address: "789 Pine Rd, Elsewhere, USA"
+    address: "789 Pine Rd",
+    city: "Elsewhere",
+    state: "TX",
+    zip: "54321"
   }
 ]
 

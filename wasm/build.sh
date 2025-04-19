@@ -1,0 +1,1 @@
+jco componentize -w shipping-calculator.wit -o shipping-calculator.wasm shipping-calculator.js

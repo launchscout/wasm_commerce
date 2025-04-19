@@ -1,0 +1,44 @@
+package wasm:commerce;
+
+world shipping-calculator-component {
+
+  /// Customer record with basic information
+  record customer {
+    id: u32,
+    name: string,
+    email: string,
+    phone: option<string>,
+    address: option<string>,
+    city: option<string>,
+    state: option<string>,
+    zip: option<string>
+  }
+
+  /// Product information for line items
+  record product {
+    id: u32,
+    name: string,
+    sku: string,
+    price-cents: u32  // in cents
+  }
+
+  /// Line item in an order
+  record line-item {
+    product-id: u32,
+    quantity: u32,
+    unit-price-cents: u32,  // in cents
+    subtotal-cents: u32     // in cents
+  }
+
+  /// Order with customer information and line items
+  record order {
+    id: option<u32>,
+    customer: customer,
+    status: string,
+    total-cents: option<u32>,  // in cents
+    line-items: list<line-item>
+  }
+
+  export calculate-shipping: func(order: order) -> u32;
+
+}

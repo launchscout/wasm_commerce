@@ -48,6 +48,14 @@ defmodule WasmCommerceWeb.OrderLive.Show do
             <p class="text-sm text-gray-500">Address</p>
             <p class="font-medium"><%= @order.customer.address %></p>
           </div>
+          <div>
+            <p class="text-sm text-gray-500">City</p>
+            <p class="font-medium"><%= @order.customer.city %></p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">State/Zip</p>
+            <p class="font-medium"><%= @order.customer.state %>, <%= @order.customer.zip %></p>
+          </div>
         </div>
       </div>
 
