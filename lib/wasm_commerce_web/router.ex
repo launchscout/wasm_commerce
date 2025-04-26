@@ -17,8 +17,7 @@ defmodule WasmCommerceWeb.Router do
   scope "/", WasmCommerceWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
-    live "/", PageLive, :home
+    live "/", OrderLive.Index, :index
     live "/orders", OrderLive.Index, :index
     live "/orders/new", OrderLive.Form, :new
     live "/orders/:id", OrderLive.Show, :show
