@@ -24,31 +24,31 @@ defmodule WasmCommerceWeb.OrderLive.Index do
         </a>
       </div>
 
-      <div class="bg-white shadow rounded-lg overflow-hidden">
+      <div class="bg-white shadow rounded-lg">
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order ID</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created At</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+              <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+              <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer</th>
+              <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+              <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+              <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+              <th class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
             <%= for order <- @orders do %>
               <tr>
-                <td class="px-6 py-4 whitespace-nowrap"><%= order.id %></td>
-                <td class="px-6 py-4 whitespace-nowrap"><%= order.customer.name %></td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <span class={"px-3 py-1 rounded-full text-sm font-medium #{status_color(order.status)}"}>
+                <td class="px-2 py-4 text-sm"><%= order.id %></td>
+                <td class="px-2 py-4 text-sm"><%= order.customer.name %></td>
+                <td class="px-2 py-4 text-sm">
+                  <span class={"px-2 py-1 rounded-full text-xs font-medium #{status_color(order.status)}"}>
                     <%= String.capitalize(order.status) %>
                   </span>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap">$<%= order.total %></td>
-                <td class="px-6 py-4 whitespace-nowrap"><%= format_date(order.inserted_at) %></td>
-                <td class="px-6 py-4 whitespace-nowrap">
+                <td class="px-2 py-4 text-sm">$<%= order.total %></td>
+                <td class="px-2 py-4 text-sm"><%= format_date(order.inserted_at) %></td>
+                <td class="px-2 py-4 text-sm">
                   <a
                     href={~p"/orders/#{order.id}"}
                     class="text-indigo-600 hover:text-indigo-900"
