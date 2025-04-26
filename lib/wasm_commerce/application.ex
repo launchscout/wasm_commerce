@@ -15,7 +15,7 @@ defmodule WasmCommerce.Application do
       # Start the Finch HTTP client for sending emails
       {Finch, name: WasmCommerce.Finch},
       {WasmCommerce.Orders.ShippingCalculator,
-       path: "wasm/shipping-calculator.wasm", wasi: %Wasmex.Wasi.WasiP2Options{allow_http: true},
+       path: "wasm/shipping-calculator.wasm", wasi: %Wasmex.Wasi.WasiP2Options{},
        name: WasmCommerce.Orders.ShippingCalculator},
       # Start a worker by calling: WasmCommerce.Worker.start_link(arg)
       # {WasmCommerce.Worker, arg},
