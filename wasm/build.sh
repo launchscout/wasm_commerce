@@ -1,1 +1,1 @@
-jco componentize -d http -w shipping-calculator.wit -o shipping-calculator.wasm shipping-calculator.js
+jco componentize -d all -w shipping-calculator.wit -o shipping-calculator.wasm shipping-calculator.js
