@@ -74,11 +74,11 @@ defmodule WasmCommerce.Orders do
     update_order(order, %{total: total, shipping_amount: shipping})
   end
 
-  def shipping_amount(_), do: Decimal.new("10.0")
+  # def shipping_amount(_), do: Decimal.new("10.0")
 
   def shipping_amount(order) do
     order = to_cents(order)
-    {:ok, shipping_cents} = ShippingCalculator.calculate_shipping(ShippingCalculator, order)
+    {:ok, shipping_cents} = ShippingCalculator.calculate_shipping(order)
     Decimal.from_float(shipping_cents / 100)
   end
 
