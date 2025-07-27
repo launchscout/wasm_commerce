@@ -1,7 +1,6 @@
-export function calculateShipping({customer: {state}}) {
-  if (state === 'CA') {
-    return 7899;
-  } else {
-    return 200;
-  }
+import productSurcharge from 'product-surcharge';
+export function calculateShipping({customer: {state}, lineItems}) {
+  const baseCharge = state === 'CA' ? 2000 : 200;
+  const productSurcharges = lineItems.reduce((sum, {product}) => sum + productSurcharge(product), 0);
+  return baseCharge + productSurcharges;
 }

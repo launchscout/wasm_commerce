@@ -2,6 +2,8 @@ package wasm:commerce;
 
 world shipping-calculator-component {
 
+  import product-surcharge: func(product: product) -> u32;
+
   export calculate-shipping: func(order: order) -> u32;
 
   record order {
@@ -25,6 +27,7 @@ world shipping-calculator-component {
 
   record line-item {
     product-id: u32,
+    product: product,
     quantity: u32,
     unit-price-cents: u32,  // in cents
     subtotal-cents: u32     // in cents
