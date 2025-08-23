@@ -19,7 +19,7 @@ customers = [
     email: "john.smith@example.com",
     phone: "555-123-4567",
     address: "123 Main St",
-    city: "Anytown",
+    city: "Oakland",
     state: "CA",
     zip: "12345"
   },
@@ -28,7 +28,7 @@ customers = [
     email: "sarah.j@example.com",
     phone: "555-987-6543",
     address: "456 Oak Ave",
-    city: "Somewhere",
+    city: "Cincinnati",
     state: "OH",
     zip: "45231"
   },
@@ -37,7 +37,7 @@ customers = [
     email: "m.brown@example.com",
     phone: "555-555-5555",
     address: "789 Pine Rd",
-    city: "Elsewhere",
+    city: "Austin",
     state: "TX",
     zip: "75201"
   }
