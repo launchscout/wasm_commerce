@@ -1,6 +1,6 @@
 defmodule WasmCommerce.Orders.ShippingCalculator do
   use Wasmex.Components.ComponentServer,
-    wit: "wasm/shipping-calculator.wit",
+    wit: "priv/wasm/shipping-calculator.wit",
     imports: %{
       "product-surcharge" => {:fn, &get_product_surcharge/1}
     }

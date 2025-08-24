@@ -23,6 +23,12 @@ defmodule WasmCommerceWeb.Router do
     live "/orders/:id", OrderLive.Show, :show
   end
 
+  scope "/admin", WasmCommerceWeb do
+    pipe_through :browser
+
+    live "/wasm-upload", AdminLive.WasmUpload, :index
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", WasmCommerceWeb do
   #   pipe_through :api

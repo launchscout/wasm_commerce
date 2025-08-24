@@ -1,0 +1,43 @@
+package wasm:commerce;
+
+world shipping-calculator-component {
+
+  import product-surcharge: func(product: product) -> u32;
+
+  export calculate-shipping: func(order: order) -> u32;
+
+  record order {
+    id: option<u32>,
+    customer: customer,
+    status: string,
+    total-cents: option<u32>,  // in cents
+    line-items: list<line-item>
+  }
+
+  record customer {
+    id: u32,
+    name: string,
+    email: string,
+    phone: option<string>,
+    address: option<string>,
+    city: option<string>,
+    state: option<string>,
+    zip: option<string>
+  }
+
+  record line-item {
+    product-id: u32,
+    product: product,
+    quantity: u32,
+    unit-price-cents: u32,  // in cents
+    subtotal-cents: u32     // in cents
+  }
+
+  record product {
+    id: u32,
+    name: string,
+    sku: string,
+    price-cents: u32  // in cents
+  }
+
+}
