@@ -77,9 +77,7 @@ defmodule WasmCommerce.Orders do
   # def shipping_amount(_), do: Decimal.new("10.0")
 
   def shipping_amount(order) do
-    order = to_cents(order)
-    IO.inspect(order)
-    {:ok, shipping_cents} = ShippingCalculator.calculate_shipping(order)
+    {:ok, shipping_cents} = ShippingCalculator.calculate_shipping(order |> convert_fields())
     Decimal.from_float(shipping_cents / 100)
   end
 
@@ -87,7 +85,7 @@ defmodule WasmCommerce.Orders do
   Converts all decimal fields in an order and its line items to integer cents.
   Returns a map with the same structure but with decimal values converted to integers.
   """
-  def to_cents(%Order{} = order) do
+  def convert_fields(%Order{} = order) do
     line_items = Enum.map(order.line_items || [], fn item ->
       product = if item.product do
         %{
