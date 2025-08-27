@@ -58,7 +58,7 @@ defmodule WasmCommerce.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      {:wasmex, "~> 0.10.0"},
+      {:wasmex, "~> 0.12.0"},
       {:tidewave, ">= 0.0.0", only: :dev}
     ]
   end

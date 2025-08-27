@@ -7,10 +7,10 @@ world shipping-calculator-component {
   export calculate-shipping: func(order: order) -> u32;
 
   record order {
-    id: option<u32>,
+    id: u32,
     customer: customer,
     status: string,
-    total-cents: option<u32>,  // in cents
+    total-cents: u32,  // in cents
     line-items: list<line-item>
   }
 
@@ -18,11 +18,11 @@ world shipping-calculator-component {
     id: u32,
     name: string,
     email: string,
-    phone: option<string>,
-    address: option<string>,
-    city: option<string>,
-    state: option<string>,
-    zip: option<string>
+    phone: string,
+    address: string,
+    city: string,
+    state: string,
+    zip: string
   }
 
   record line-item {
